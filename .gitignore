@@ -2,3 +2,5 @@
 __pycache__
 myenv
 *.db
+*.db-wal
+*.db-shm
