@@ -78,7 +78,7 @@ for thread_id in st.session_state['chat_threads']:
 
 
 # main ui
-for message in st.session_state['message_history'][::-1]:
+for message in st.session_state['message_history']:
     with st.chat_message(message['role']):
         st.text(message['content'])
 
@@ -91,7 +91,13 @@ if user_input:
     with st.chat_message('user'):
         st.text(user_input)
         
-    CONFIG = {'configurable': {'thread_id': st.session_state['thread_id']}}
+    CONFIG = {
+        'configurable': {'thread_id': st.session_state['thread_id']},
+        'metadata': {
+            'thread_id': st.session_state['thread_id']
+        },
+        "run_name": "chat_turn"
+    }
     
     with st.chat_message('assistant'):
         
